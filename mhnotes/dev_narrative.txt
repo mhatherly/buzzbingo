@@ -1,0 +1,18 @@
+THIS FILE IS FOR LOGGING WHAT I HAVE DONE SO I CAN KEEP TRACK OF IT FOR THIS APP
+
+IT WILL BE PUSHED UP TO GITHUB so nothing confidential should be placed here
+
+Initial setup
+used rails new  with no test per chapter 3 of RailsTutorial (aka RlTl)
+
+used gitignore and GEMFILE from RlTL 
+
+for GEMFILE added Steak, removed cucumber.   
+then ran bundle install --without production
+
+Ran rspec:install (don't know if that messes up steak._ 
+Set up repository in GitHub and pushed to it
+
+used a README file in rdoc style not in md style contrary to RlTl. 
+
+
