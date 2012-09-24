@@ -14,5 +14,9 @@ Ran rspec:install (don't know if that messes up steak._
 Set up repository in GitHub and pushed to it
 
 used a README file in rdoc style not in md style contrary to RlTl. 
+ commit and push
+create a heroku app
+result: 
+http://secret-atoll-3156.herokuapp.com/ | git@heroku.com:secret-atoll-3156.git
 
-
+tried to push but jquery rails 2.0.0 crapped out - need to update gem file
