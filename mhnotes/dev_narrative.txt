@@ -20,3 +20,62 @@ result:
 http://secret-atoll-3156.herokuapp.com/ | git@heroku.com:secret-atoll-3156.git
 
 tried to push but jquery rails 2.0.0 crapped out - need to update gem file
+changed jquery version to ~>2.0.2
+commit and push again
+that worked on the heroku push - we are now in business.   Time to write some 
+steak specs.
+
+9/24 
+git co -b "steak-tests-drafts"
+
+rails generate steak --capybara
+no Go need this first i think
+rails generate steak:install
+  reult is : 
+  generate  rspec:install
+   identical  .rspec
+       exist  spec
+   identical  spec/spec_helper.rb
+      create  spec/acceptance
+      create  spec/acceptance/acceptance_helper.rb
+      create  spec/acceptance/support/helpers.rb
+      create  spec/acceptance/support/paths.rb
+
+rails generate steak:spec bingo 
+
+  result: 
+    rails generate steak:spec bingo
+    
+ bundle exec rspec -f d specs/acceptance/ 
+ 
+     result: 
+     
+        Bingo 
+          In order to ...
+          As a ...
+          I want ...
+          first scenario
+        
+        Finished in 0.08457 seconds
+        1 example, 0 failures
+        
+I don't like this - would rather have a pending status like standard rspec
+so i added pending in the scenario and copied it to a template in the same
+directory, so i can use it for all specs.  
+
+Now it runs twice but that is OK.  I changed it to read only to avoid accidental update
+
+messing with getting a test to run and give something back - 
+used the helper method in acceptance/support/helpers.rb
+and just the default page so I can get through to get some sort of result.
+
+This code works, but I am not sure what it buys me.    And I am green enough 
+at rspec that I am confusing them - the fact that there is so litte doc on
+steak makes my decision to abandon this line and stick straigt to rspec.
+
+
+
+
+
+
+ 

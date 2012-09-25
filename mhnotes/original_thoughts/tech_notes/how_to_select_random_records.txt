@@ -1,0 +1,1 @@
+http://thinkingeek.com/2011/07/04/easily-select-random-records-rails/

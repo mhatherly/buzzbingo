@@ -1,0 +1,63 @@
+Buzzword Bingo preliminary requirements
+
+Purpose allow printout of buzzword bingo based on stored database set of buzzwords
+Used as a simple Ruby on Rails application for development exercise.  It should be 
+complicated enough to be interesting but simple enough to get done before interest 
+is done
+
+v.01 requirements
+
+Main Use Case
+A User bring up website
+
+Presses a button that says generate bingo card
+
+A bingo card appears on the screen with buzzwords in a 5x5 table cell with approriately
+sized  text and a Print button The center square is called FREE
+
+The print button brings up  a dialog of available printers and prints out an
+bingo card sized for 8.5"x11"
+
+B. DB entry
+User calls up screen that shows existing data in alpha order
+and a button or form to enter more
+
+There is a maximum size of buzzword, based on number of characters that can be 
+set in a cell at minimum font size and max lines in a cell.   Because lines will break on the words, this will
+have to be a somewhat complicated check.  
+
+No empty entries are permitted.
+
+No duplicate buzzwords are permitted in the database
+
+C.   Some things to test for in the spec/feature
+MAIN PAGE
+- only one page when print is hit
+- no duplicate cells
+- generate an error if there is not enough data in the db to populate the page
+- font size varies by lenght of phrase
+- puzzle id on page
+- font fills cells for short words
+- FREE is in the middle and is styled differently
+-puzzle changes if refresh
+- refresh button
+- has help procedures
+- has tech info page
+- has roadmap page
+Buzzword DB maint page Tests - Pending
+
+Z. Forseen enhancement for future version
+ online checkoff of card with victory screen
+Multiuser - many user playing online with a stop function at a winner
+
+Multigame - group games for online user
+subject -oriented sheet
+Card numbers
+card titles
+fuzzy search function on db (to remove similar phrases
+
+
+
+
+
+
