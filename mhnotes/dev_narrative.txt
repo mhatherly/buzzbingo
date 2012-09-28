@@ -71,7 +71,44 @@ and just the default page so I can get through to get some sort of result.
 
 This code works, but I am not sure what it buys me.    And I am green enough 
 at rspec that I am confusing them - the fact that there is so litte doc on
-steak makes my decision to abandon this line and stick straigt to rspec.
+steak makes my decision to abandon this line and stick  to rspec.
+
+now to figure out how to remove a gem from bundle....
+should be pretty simple under R3 - just change the GEMFILE and bundle install.   
+
+But first i added in the prevous thoughts that I had placed in dropbox into mh notes
+then I do the commit 
+
+After bundle install some stuff still works in the acceptance.  But I should move this to spec directory
+
+after running through railscast on how I test, I tried to run
+rails generate integration_test help_page which generated a page
+called spec/requests/help_pages_spec.rb 
+
+good enough we will work with this dir for awhile
+but lets do the home page first
+
+wrote a bunch of pending specs for the home page but failed at visit root_path since I have 
+no routes or controllers.    
+
+so lets at least get the home page answering
+
+rails generate controller home --no-test-framework --no-assets --no-helper
+figured out the -p option for "pretend" - think dry-run is useful for 
+ figuring what gets created,
+RESULT 
+create  app/controllers/home_controller.rb
+      invoke  erb
+      create    app/views/home  - that is a dir.
+tried to run tests, but got root_path note found
+created at app/views/home/home.html file and now works online but tests 
+still fail with root_path not found
+
+tried adding in some includes from rspec and capybara into the rspec, and still getting
+a failure - now we find root_path but can't find visit method.    For some reason
+those pieces are not getting included in the requests directory like the
+doc says they should.    
+
 
 
 
