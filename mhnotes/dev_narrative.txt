@@ -109,10 +109,75 @@ a failure - now we find root_path but can't find visit method.    For some reaso
 those pieces are not getting included in the requests directory like the
 doc says they should.    
 
+OK - the goofy behavior was fixed by using a 
+before blokc to wrap the visit page
+putting subject page first
+adding an it should after each describe.    
 
+I removed the includes I was messing with and it was still working
 
+9/28 I am thinking that I can remove the before block and put the visit in the describe.  
+no - i need an each before for each test.
 
+OK I have got the first test executing properly (testing for logo) and then I got
+the page passing the test.   I had to use page rather than it inside the test, 
+because I used a description with the it see the spec for more detail.
 
+I added the logo into app/assets images  and added the ruby command to render the image
+right now, the image has no styling and is not centered.  I should also probably block around the
+image with the same color to deal with the browser size problem.    
 
+I also should add in the IE9 shim per hartl but first lets deal with the other peices
+ This code passes 
+ it "has background behind the logo that matches" do
+         should { pending("logo color match") }
+       end
+when it should be pending
+but  this code correctly gives pending:
+ describe "has a narrative"  do
+      it should { pending("intro to app")}
+    end
+ but first deal with the center logo because I am not matching   
+ 
+ OK  here is what I found out 
+  # capybara cannot detect style elements - unless they are inline the html 
+  I can use xpath to correctly detect the image source otherwise I just find an image
+  This code works 
+  it "has a logo" do 
+        page.should have_xpath("//img[@src = '/assets/bblogo.png']")
+      end
+  Now, what happens if I break this by adding a div tag? 
+    no it does not since xpath syntax is 
+    // select no matter where in the doc it is 
+    so we are looking for image somewhere in the doc with attribute src
+  
+  OK now to document how to center an image in css
+  img { display: block; margin-right: auto; margin-left: auto; } 
+  now try using id
+
+ page.should have_xpath("//img[@id = 'logo', @src = '/assets/bblogo.png']")
+ 
+ does not work on a predicate error, but the id is attached to the div tag anyway at the moment
+ 
+added a id to the logo 
+  <%= image_tag "bblogo.png", id: "logo_image" %>
+  
+  and change the spec according to xpath syntax 
+  page.should have_xpath("//img[(@id = 'logo_image') and (@src = '/assets/bblogo.png')]")
+
+another way to do this is to find within the division 
+  page.should have_xpath("//div[@id='logo']/img") # has an image in div logo
+ 
+ or to get really specific 
+  page.should have_xpath(
+           "//div[@id='logo']/img[(@id = 'logo_image') and (@src = '/assets/bblogo.png')]"
+           )
+
+So i think we are done  with finding stuff via xpath - now work on styling with 
+bootstrap sass
+
+first task is to center the logo on the top of the page, and get the background color
+the same as the logo.    We open gimp to get the color code..  try 35e3c8  not a great color but one we can
+live with
 
  
