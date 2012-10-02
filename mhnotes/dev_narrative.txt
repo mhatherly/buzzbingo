@@ -178,6 +178,39 @@ bootstrap sass
 
 first task is to center the logo on the top of the page, and get the background color
 the same as the logo.    We open gimp to get the color code..  try 35e3c8  not a great color but one we can
-live with
+live with and distinctive enough
+to center an image
+img { display: block;
+     margin-left: auto;
+     margin-right: auto;
+     }
 
- 
+messing around with background but can't get the whole area to be that
+since background color only affects the element.    
+
+perhaps bootstap sass can help us, so I ran through a tutorial on that to get some idea 
+of what I am doing 
+
+ok I created a custom_css_scss in assets stylesheets and added the following
+@import "bootstrap";
+
+img#logo_image { display: block;
+        margin-left: auto;
+        margin-right: auto;
+        }
+this center my image, and i also put the text into a container div and 
+into a hero-unit div for some styling.    
+
+copied in the navbar from the twitter bootstrap docs and started to add things        
+
+The hero unit with multi paragraphs looks crappy - try something else
+getting better - with just span2 then span 8
+navbar looks crappy - trying inverse
+nogo - but I am a couple release behind in  bootstrap sass - 2.0.0 instead of 
+2,1   upgraded gem file version and reinstall
+
+No go still ignores inverse so I am trying some less code here
+from http://blog.nyaruka.com/customizing-twitter-bootstraps-nav-bar-color
+ but the vars are wrong - need to change to $ and then use this list
+  
+http://twitter.github.com/bootstrap/customize.html
