@@ -6,36 +6,50 @@ describe "Home Page" do
   before(:each) {visit root_path}
 
    describe "has the standard features of this app's pages" do
-    # do I need to get more specific on where the source is?
+      
+      it "has a title"  do
+        page.should have_selector('title', text: "Buzzword Bingo") 
+      end
+      
+      
       it "has a logo" do 
-        #page.should have_xpath("//img[(@id = 'logo_image') and (@src = '/assets/bblogo.png')]")
-         #page.should have_xpath("//div[@id='logo']/img") # has an image in div logo
          page.should have_xpath(
            "//div[@id='logo']/img[(@id = 'logo_image') and (@src = '/assets/bblogo.png')]"
            )
       end
-     
+        
+      describe "with a navigation bar" do
+         #it "that points to the Buzzword maint page" do
+           #page.should have_link("buzzwords", href: buzzwords_path)
+        #end
+        
+        
+        it "that points to the Tech Info page" do
+           page.should have_link('Tech Info', href: tech_path)
+                  
+        end
+        
+        it "that points to the Help page" do
+           page.should have_link('Help', href: help_path)
+                  
+        end
+       end  #nav bar
        
-
        
-     #it { should have_content("have title") } # fix this  
+       
    end
     
-    #describe "has a narrative"  do
-      #it should { pending("intro to app")}
-    #end
+    describe "has a narrative"  do
+      it "with a friendly description"  do
+       page.should have_content("The concept of this application")
+      end
+    end
     
-    #describe "it should have a link to the help page" do
-       #it { should have_link("Help",  href: help_path) } 
-    #end
-    
-    #describe "it should have a link to the maintain buzzwords page" do
-       #it { should have_link("Buzzword",  href: buzzword_path) } 
-    #end 
+  
      
-     #describe "it should have a button to generate a bingo page" do
-        #it { should have_selector('input', value: 'Generate') }
-     #end 
+    describe "has a button to generate a bingo card" do
+        it { should have_link('Give me a Bingo Card!') }
+     end 
      
      #describe "it should have a link to the Tech Info page" do
         #it { should have_link("Buzzword",  href: tech_path ) } 

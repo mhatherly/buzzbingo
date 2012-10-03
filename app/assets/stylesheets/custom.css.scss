@@ -4,20 +4,14 @@ $bbYellow: #FFFF00;
 $bbGold: #FFCC00;
 $bbLightYellow: #FFFFCC;
 $bbLogoPurple: #e2e0ed;  /* a faded version of bbPurple */
-/*
-  attempting a change in color see
-  * http://blog.nyaruka.com/customizing-twitter-bootstraps-nav-bar-color
 
 
-*/
-  
-/*$navBarBgStart: #3D368B;
-$navBarBgEnd: #232051;
-*/
+/* bootstap variables */
 $navbarBackground: $bbPurple; /* try royal purple */
 $navbarLinkColor: $bbYellow; /* yellow */
 $navbarLinkColorHover: $bbGold; /*gold */
 
+$btnPrimaryBackground: $bbPurple;
   
 @import "bootstrap";
 
@@ -31,8 +25,19 @@ img#logo_image { display: block;
         margin-left: auto;
         margin-right: auto;
         }
+
 div#home_aside {
         background-color: $bbLightYellow;
         border: 5px groove $bbPurple;
         padding: 5px;
         }
+/* make button look like navbar */
+.btn-primary {
+   color: $bbYellow;
+   text-shadow: 0 1px 0 white;
+   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+   background-color: #B1AED0;
+    background-image: -moz-linear-gradient(center top , white, #3D368B);
+    background-repeat: repeat-x;
+    &:hover {color: $bbGold; }
+}

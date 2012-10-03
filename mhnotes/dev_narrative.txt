@@ -214,3 +214,30 @@ from http://blog.nyaruka.com/customizing-twitter-bootstraps-nav-bar-color
  but the vars are wrong - need to change to $ and then use this list
   
 http://twitter.github.com/bootstrap/customize.html
+
+after a bit ov work, I go it looking nice enough with a purple background, and 
+purple navbar with yellow and gold, and a nice text.   Now back to the spec tests
+
+title test failed because title was wrong.
+
+Now I updated application.html.erb to give the app title.   Not sure if I want to mess 
+with specfic page titles. 
+
+10/2 updated the testing for the home page, and generated stubs for the 
+static pages help and tech info.   Also added a button to finish off the 
+preliminary home page.  I won't need to revisit that except to put in the link
+
+I spent some time styling the button so it looked like the Nav bar,   
+There were a few global bootstrap vars I could play with, but mostly I
+went with some specific styling.   The hover was a little tricky but I found 
+a less refrence that seemed to do it using &:hover {}    I used firebug to figure out the 
+navbar styling and copied that into the button.     It looks good. 
+
+I will leave the help page for last.  But I will update the tech page so I
+can start to use partials for some of the duplicates, now that my home page
+passes my spec tests.   That way when I refactor, I can find any issues. 
+
+NOTE: COME BACK HERE LATER - Possible Refactor:  I have one directory per page.  It started when 
+I did the generate controller.   I have been following that convention for adding the
+dummy pages, but  I think I want to bring it back to views dir.     
+
