@@ -9,8 +9,13 @@ describe "Tech Info Page" do
       it_behaves_like "Standard_Web_Page"
     end
     
-    describe "has something else"
-    pending "I have to think"
+    describe "gives credit where credit it due"
+    pending "links to Hartl's tutorial"
+    pending "lists gems used"
+    pending "discusses guard"
+    pending "credits ruby and rails"
+    pending "credits linus and team"
+    
 end    
     
     

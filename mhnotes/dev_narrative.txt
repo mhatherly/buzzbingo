@@ -244,3 +244,10 @@ dummy pages, but  I think I want to bring it back to views dir.
 So next is to write the spec for the tech info page
 and to do that I need to figure out how to factor out the standard page tests
 since I want a separate file per page.  
+
+
+OK figured out the shared examples - placing in the spec support direcotry
+with a shared_example_for method, and then adding
+behaves_like_a "Standard Web Page" in the spec.
+
+Started to work on the tech page by factoring the header as a partial
