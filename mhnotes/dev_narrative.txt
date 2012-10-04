@@ -241,3 +241,6 @@ NOTE: COME BACK HERE LATER - Possible Refactor:  I have one directory per page. 
 I did the generate controller.   I have been following that convention for adding the
 dummy pages, but  I think I want to bring it back to views dir.     
 
+So next is to write the spec for the tech info page
+and to do that I need to figure out how to factor out the standard page tests
+since I want a separate file per page.  
