@@ -6,6 +6,7 @@ gem 'bcrypt-ruby' , '3.0.1'
 gem 'faker' , '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
+gem 'thin' '~>1.5.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -31,9 +32,6 @@ group :test do
     gem 'database_cleaner', '0.7.0'
 end
 
-group :development, :test do
-   gem 'thin', '~>1.5.0'
-end
 
 group :production do
 	gem 'pg', '0.12.2'
