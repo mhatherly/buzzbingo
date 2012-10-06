@@ -9,13 +9,18 @@ describe "Tech Info Page" do
       it_behaves_like "Standard_Web_Page"
     end
     
-    describe "gives credit where credit it due"
-    pending "links to Hartl's tutorial"
+    describe "gives credit where credit is due" do 
+       it  "links to Micheal Hartl's tutorial" do
+        page.should have_link(
+            "Ruby on Rails Tutorial", 
+            href: "http://www.railstutorial.org" )
+      end  
+      
     pending "lists gems used"
     pending "discusses guard"
     pending "credits ruby and rails"
     pending "credits linus and team"
-    
+    end 
 end    
     
     
