@@ -252,3 +252,24 @@ behaves_like_a "Standard Web Page" in the spec.
 
 
 Started to work on the tech page by factoring the header as a partial
+then wrote some pending specs for the links I wanted
+thens started a narrative that ended up as an essay - need to simplfy.
+
+So I merged the branch back in after renaming the branch
+git branch -m oldname newname
+
+and pushed to heroku, but it does not like due to thin error
+
+heroku logs 
+was the command I used to figure it out. 
+
+after a bit of dinking around with the gem file (and forgetting to run 
+bundle install, I got it to work on Heroku.
+
+I do realize I don't have a link to the home page, so I can't get back except 
+with the button, so I need to add that to the navbar and to the tests.
+
+Done.
+
+ 
+

@@ -3,53 +3,97 @@
  <div class="expository" >
   <div class="span2"> </div>
   <div class ="span10">
-   <p> This project began as a follow on exercise after I took the summer of 2012
-    to complete the
-    <a href="http://www.railstutorial.org">Ruby on Rails Tutorial</a>
-     by Michael Hartl.   I had given Rails a shot several years ago, and gave 
-     up after I loaded a database with my book library, got a basic scaffolded
-     website up, and then couldn't do anything with it that I wanted to.</p> 
- 
-     <p> My interest revived when I came across the 
-     <a  href="http://getontracks.org">Tracks project</a>
-     Tracks project, which implemented the "Getting Things
-     Done" method of task management.   I liked the application (and still do), 
-     but I wanted to tweak it a little, and my desire to do that led me back to 
-     Rails for another  shot.   As I investigated the technology a little, I realized 
-     that I really liked Ruby as a language.   I had been scripting in Perl for
-     awhile, and I have  been trained in Java, and Ruby seemed to me to fill the gap
-     between the two languages -
-     not as formal as Java, but object oriented; and not as quirky as Perl, but 
-     having the same kind of philosophy of "simple thing should be simple, and hard
-     things should be possible."   So I took a side trip to learn basic Ruby, 
-     messing around with IRB on my Ubuntu box, and reading 
-     <a href='http://www.scribd.com/doc/8545174/whys-Poignant-Guide-to-Ruby'>
-     why's Poignant Guide to Ruby </a>  
-      which was THE most marvelously quirky tech manual I have ever read, beating out
-     Larry Walls PERL camel book by half a length.   </p> 
- 
-    <p> The next part of my discovery went to
+   <h3> Inspirations/ Influences</h3>
+    <ul>
+     <li><a href="http://www.railstutorial.org">Ruby on Rails Tutorial</a>
+     by Michael Hartl.  This project is a followon exercise</li> 
+      <li><a  href="http://getontracks.org">Tracks project.</a>
+     I want to enhance this application when I get competent enough.</li>
+    <li><a href='http://www.scribd.com/doc/8545174/whys-Poignant-Guide-to-Ruby'>
+     why's Poignant Guide to Ruby</a>. THE most marvelously quirky tech manual
+    I have ever read.</li> 
+    <li>
      <a href='http://www.codeschool.com/'>Code School's </a>
      <a href='http://www.codeschool.com/courses/rails-for-zombies'>  
-       Rails for Zombies</a>.
-     I am not crazy about videos in general - I can read much faster that I can watch -
-     but this was well put together, and even though Greg insisted on pronouncing
-     attributes as "a-TRI-butes" like the verb instead of "AT-tributes" the noun, 
-     I found it well worth my time. </p> 
+       Rails for Zombies course</a>.</li>
+    <li> <a href='http://en.wikipedia.org/wiki/Phil_Liggett'>
+         Phil Ligget's</a> and 
+    <a href='http://en.wikipedia.org/wiki/Paul_Sherwen'>
+    Paul Sherwen's</a> 
+    commentary during the 2012 <a href="http:/letour.fr">Tour De France</a>.  
+        They have so many catch phrases that my spouse and I started playing
+        Buzzword Bingo on paper while watching the Tour, and I realized that  an app like this would be
+        a great learning exercise. </li>
+    </ul>
      
-     <p>  But it was Hartl's book that really helped me put all the pieces together.  
-     As a learning tool, it had a great grasp of just how much new information 
-     to add at a time, without throwing too much jargon all at once.    I loved its
-     emphasis on Test Driven Design, and I found zero errors in the example code, even
-     though I keyed in every line manually, rather that cut and pasted.   (I found that the 
-     exercise of keying in made me focus on each line of code and increased the depth of
-     my learning).   If I had a critique of the book, it would be the 
-     missing piece on exception handling (this might be me shoehorning my Java experience 
-     into the Ruby paradigm) and the lack of an index in the online version 
-     (perhaps the publish version will have it).   Having said that,  I highly recommend it
-     and if Michael ever finds himself in Minneapolis/St Paul I would gladly by him that 
-     beer mentioned in the licence. 
-     </p> 
+    <h3> Technology used in this application</h3>
+     <ul>
+     <li> <a href="http://www.ruby-lang.org/en/">Ruby</a> version 1.9.3</li>
+     <li> <a href="http://rubyonrails.org/">Ruby on Rails</a> version 3.2.5 </li>
+     <li> including the following Gems (add ons) from 
+     <a href='https://rubygems.org'>RubyGems</a>
+     <ul>
+        <li>bootstrap-sass, version: 2.1.0</li>
+        <li> bcrypt-ruby, version: 3.0.1</li>
+        <li>faker, version: 1.0.1</li>
+        <li>will_paginate, version: 3.0.3</li>
+        <li>bootstrap-will_paginate, version: 0.0.6</li>
+        <li>thin, version: 1.5.0</li>
+        <li>sqlite3, version: 1.3.5</li>
+        <li>rspec-rails, version: 2.10.0</li>
+        <li>annotate, version:  2.4.1.beta</li>
+        <li>sass-rails, version: 3.2.4</li>
+        <li>coffee-rails, version: 3.2.2</li>
+        <li>uglifier, version: 1.2.3</li>
+        <li>jquery-rails, version: 2.0.2</li>
+        <li>capybara, version: 1.1.2</li>
+        <li>factory_girl_rails, version: 1.4.0</li>
+        <li>database_cleaner, version: 0.7.0</li>
+        <li>pg, version: 0.12.2</li>
+       </ul>     
+    </li>
+     <li><a href='http://twitter.github.com/bootstrap/index.html'>Twitter Bootstrap</a></li>
+     <li><a href='https://rvm.io/'>Ruby Version Manager</a></li>
+     <li><a href='https://github.com/'>Github</a></li>
+     <li><a href='http://www.heroku.com/'>Heroku</a></li> 
+     <li><a href="http://www.kernel.org"> Linux</a>, specifically, 
+      <a href='http://www.ubuntu.com/'>Ubuntu</a> Lucid Lynx</li>
+     <li><a href='http://www.geany.org/'>Geany</a></li>
+     <li><a href='http://www.mozilla.org'>Firefox</a> with 
+       Firebug and Link Checker addons" </li> 
+     <li>  And all other sorts of underlying FOSS technology that I am 
+     grateful for...</li>
+    </ul>
+    <h3> Technology I will probably use later in this and other application</h3>
+       <ul> 
+        <li> The spork,  guard, and launchy gems.    I am not yet good
+         enough at Rails in general 
+          and rspec in particular to have auto execute of my tests.  The 
+          popups would confuse my slow and steady workflow at this point.</li>
+        <li> An IDE that understands rails better.  Geany is nice and fast 
+          but I have a feeling an IDE would help be avoid some simple errors. </li>
+        <li> Either steak or cucumber for capturing user requirements.  Again, 
+            I find myself limited by the number of tools I want to learn
+             simultaneously.</li>
+       </ul>
+    <h3> References I have found useful</h3>
+     <ul>
+        <li><a href="http://railscasts.com/">Rails Casts</a> by Ryan Bates</li>
+        <li><a href='http://stackoverflow.com/'>Stack Overflow</a> Q and A </li>
+        <li><a href='http://www.w3schools.com' >W3 Code School</a> for HTML and CSS</li>
+        <li><a href="http://www.rubyflow.com/">Rubyflow RSS Feed</a> for Ruby and Rails news</li>
+        <li><a href='http://api.rubyonrails.org/'>Rails API Documentation</a></li>
+     </ul>
+    <h3> Roadmap (highly speculative) for future versions of this application</h3>
+         <ul>
+         <li> Release 0.3 Printable Bingo Cards with Tour De France Buzzwords</li>
+         <li> Release 0.5 add Subject Areas for cards</li>
+         <li> Release 0.9 add online version of cards</li>
+         <li> Release 1.0 add online shared multiuser game session with user signon and 
+         victory announcements</li>
+         <li> Release 2.0 (If I ever get there) Redesign for Mobile devices, since
+          you won't always have your laptop handy.</li>
+         </ul>
   </div>
  </div>
 </div>

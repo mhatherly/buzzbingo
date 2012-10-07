@@ -15,7 +15,11 @@ shared_examples_for "Standard_Web_Page" do
      #it "that points to the Buzzword maint page" do
        #page.should have_link("buzzwords", href: buzzwords_path)
     #end
-    
+    it "that points to the Home page" do
+       page.should have_link('Home', href: root_path)
+              
+    end
+     
     
     it "that points to the Tech Info page" do
        page.should have_link('Tech Info', href: tech_path)
