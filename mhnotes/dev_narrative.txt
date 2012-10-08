@@ -365,3 +365,55 @@ edit_buzzword GET    /buzzwords/:id/edit(.:format) buzzwords#edit
  
  Cool, now I have header info in my scaffold stuff, but double headers in
  my other pages.   So I should remove it from my static pages and move on with some tests.
+
+Done - and committed along with some cruft removal from earlier pages.
+
+Some things I notice right now
+1) The show action is worthless since it only shows the same thing.   I should
+disable that for now.
+2) A nice form for adding multiple buzzwords at the same time would be useful (enhancement)
+3) Need to fix error handling for dups in the interface
+4) The index page has Listing buzzwords as the title. 
+5) I need to make sure something is not too long, but I don't know what too long is
+(can't be wrapped into 3 lines in a bingo cell, but I am not sure what that lenght is yet), so
+I will add an arbitary length and fix it later. 
+6) Can create a zero lenght buzzword
+7) Long words force the actions far to the right
+8) I know that bootstrap has some icons/widgits that might prove cute for the maint actions. 
+9) the index screen does not paginate
+10) I wonder if an edit in place is possible. (enhancement?)
+
+I think we work on the looks stuff first.    
+
+So write a test for the index page that does not have the Show action
+
+OK - we are at the index view test that scaffold generates for me, and I do not 
+understand what it is doing.    I think I will write a request spec test and come
+back to this one later.   
+
+I have no idea if my editing will break the view test, but so be it.   
+
+so copy the help page spec test and go from there
+it "does not have a show link" do
+      page.should_not have_link("Show")  
+    end 
+This tests passes before any change.  But of course there is not show 
+link because I have no buzzwords in my test DB!!! time for factory stuff.
+
+but that is tomorrow....
+
+OK found something interesting.   I added this to the top of the spec
+let(:buzzword) { FactoryGirl.create(:buzzword, phrase: "Lorem Ipsum") }
+
+and the test passed - since let is a lazy function.      
+but let is also a memoized function, which means that it links a symbol to 
+a function  result - that means it can act strangely.   And it did.   
+
+Because I am visitng a page that does not refer to the symbol buzzword when it
+is generated, I have nothing in the database.   So when I added the test
+page.should have_content(buzzword.phrase)  it did not exist.  
+
+The solution was to make the let non lazy by using let! instead.    
+Then the should have_content above passes and the test 
+page.should_not have_link("Show") fails as expected, since I haven't removed that yet.
+ 

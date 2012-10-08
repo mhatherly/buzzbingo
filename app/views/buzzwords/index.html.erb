@@ -11,8 +11,7 @@
 <% @buzzwords.each do |buzzword| %>
   <tr>
     <td><%= buzzword.phrase %></td>
-    <td><%= link_to 'Show', buzzword %></td>
-    <td><%= link_to 'Edit', edit_buzzword_path(buzzword) %></td>
+     <td><%= link_to 'Edit', edit_buzzword_path(buzzword) %></td>
     <td><%= link_to 'Destroy', buzzword, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
