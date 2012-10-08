@@ -1,4 +1,6 @@
 Buzzbingo::Application.routes.draw do
+  resources :buzzwords
+
   root to: 'home#home'
    
    match '/home', to: 'home#home'

@@ -273,9 +273,54 @@ Done.
 
  Finished up the tech page, decided the help page comes last except I want to 
  
- write a test for it. so I think I
+ write a test for it.
+  
+ Done 
+  so I think I
  am ready for the database - I am going to do a complete scaffold and see
- what works and what doesn't from there.
+ what works and what doesn't from there.  but I will do it in its own branch
+ so first I push to github and heroku and check things out on heroku.   
  
+ All OK
  
+ so started new branch and ran the following
+ rails g scaffold   buzzword phrase:string:uniq --no-stylesheets
+ result output
+  invoke  active_record
+      create    db/migrate/20121008004542_create_buzzwords.rb
+      create    app/models/buzzword.rb
+      invoke    rspec
+      create      spec/models/buzzword_spec.rb
+      invoke  resource_route
+       route    resources :buzzwords
+      invoke  scaffold_controller
+      create    app/controllers/buzzwords_controller.rb
+      invoke    erb
+      create      app/views/buzzwords
+      create      app/views/buzzwords/index.html.erb
+      create      app/views/buzzwords/edit.html.erb
+      create      app/views/buzzwords/show.html.erb
+      create      app/views/buzzwords/new.html.erb
+      create      app/views/buzzwords/_form.html.erb
+      invoke    rspec
+      create      spec/controllers/buzzwords_controller_spec.rb
+      create      spec/views/buzzwords/edit.html.erb_spec.rb
+      create      spec/views/buzzwords/index.html.erb_spec.rb
+      create      spec/views/buzzwords/new.html.erb_spec.rb
+      create      spec/views/buzzwords/show.html.erb_spec.rb
+      invoke      helper
+      create        spec/helpers/buzzwords_helper_spec.rb
+      create      spec/routing/buzzwords_routing_spec.rb
+      invoke      rspec
+      create        spec/requests/buzzwords_spec.rb
+      invoke    helper
+      create      app/helpers/buzzwords_helper.rb
+      invoke      rspec
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/buzzwords.js.coffee
+      invoke    scss
+      invoke  scss
+
+ So then I will commit so I can go backwards if needed.
 
