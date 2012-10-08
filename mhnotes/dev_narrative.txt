@@ -358,3 +358,10 @@ edit_buzzword GET    /buzzwords/:id/edit(.:format) buzzwords#edit
  cruft in the final stages of this and clean it up.    
  
  First thing I want to do is fix the navbar so I can get there.   Test first.
+ 
+ Done - linked into nav bar via the index.  
+ 
+ Now, what happens if I mess with layout/application  and dump the header in there.
+ 
+ Cool, now I have header info in my scaffold stuff, but double headers in
+ my other pages.   So I should remove it from my static pages and move on with some tests.
