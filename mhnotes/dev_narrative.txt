@@ -324,3 +324,37 @@ Done.
 
  So then I will commit so I can go backwards if needed.
 
+OK, just for grins I run the test suite, which now has 55 tests, up from
+25 prior to scaffold gen.   21 fail.   A lot of them fail because I haven't run db:migrate
+to create the tables and indexes, so lets do this. 
+rake db:migrate
+rake db:test:prepare
+
+I think that is all i need to do 
+
+- so I run  the spec again and I get 
+all pass except for 3 pending.    One from me - help page, and two from 
+the scaffold about spec/helpers/buzzwords_helper_spec and spec/model/buzzword_spec
+
+-but what do I have?   
+here are my routes
+buzzwords GET    /buzzwords(.:format)          buzzwords#index
+              POST   /buzzwords(.:format)          buzzwords#create
+ new_buzzword GET    /buzzwords/new(.:format)      buzzwords#new
+edit_buzzword GET    /buzzwords/:id/edit(.:format) buzzwords#edit
+     buzzword GET    /buzzwords/:id(.:format)      buzzwords#show
+              PUT    /buzzwords/:id(.:format)      buzzwords#update
+              DELETE /buzzwords/:id(.:format)      buzzwords#destroy
+         root        /                             home#home
+         home        /home(.:format)               home#home
+         tech        /tech(.:format)               tech#tech
+         help        /help(.:format)               help#help
+ 
+ And if I navigate to localhost:3003/buzzwords, I get some very ugly looking
+ forms and lists that seem to function, except for when I add a duplicate
+ phrase (constraint error).   
+ 
+ Still, I think this is a place to start.   The trick will be to recognize the
+ cruft in the final stages of this and clean it up.    
+ 
+ First thing I want to do is fix the navbar so I can get there.   Test first.
