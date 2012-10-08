@@ -1,11 +1,12 @@
 require 'spec_helper'
 
-describe "HelpPages" do
-  describe "GET /help_pages" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get help_pages_path
-      response.status.should be(200)
+describe "Help page" do
+  subject {page}
+  before(:each) { visit help_path }
+  
+  describe "has the standard features of this app's pages" do
+      it_behaves_like "Standard_Web_Page"
     end
-  end
+    
+  pending ("has helpful stuff")
 end

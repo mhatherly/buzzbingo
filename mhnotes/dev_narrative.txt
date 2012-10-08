@@ -271,5 +271,11 @@ with the button, so I need to add that to the navbar and to the tests.
 
 Done.
 
+ Finished up the tech page, decided the help page comes last except I want to 
+ 
+ write a test for it. so I think I
+ am ready for the database - I am going to do a complete scaffold and see
+ what works and what doesn't from there.
+ 
  
 
