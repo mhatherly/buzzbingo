@@ -416,4 +416,19 @@ page.should have_content(buzzword.phrase)  it did not exist.
 The solution was to make the let non lazy by using let! instead.    
 Then the should have_content above passes and the test 
 page.should_not have_link("Show") fails as expected, since I haven't removed that yet.
- 
+
+So I remove the route by specifing the resource in the route file using only
+and I edit the link away in the index page, and remove show.html.erb.
+
+and it passes and item 1 is done
+
+Oops - should have run the entire suite, my controller test fails, 
+my routing test fails and my view test fails
+
+remove the view show test, since the view is gone.  
+edit away spec/routes that refer to show and the spec/controller that does
+the same, and we pass...
+
+Now for a refactor, since the routing file is kind of ugly.   Is there
+an anti function for the resources :only?   Yes - :except 
+so we didn't break anything with that change  COool!

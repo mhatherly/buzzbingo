@@ -1,6 +1,5 @@
 Buzzbingo::Application.routes.draw do
-  resources :buzzwords, only: [:create, :index, :new, 
-                        :edit, :update, :destroy]
+  resources :buzzwords, except: :show 
 
   root to: 'home#home'
    
