@@ -11,10 +11,6 @@ describe BuzzwordsController do
       get("/buzzwords/new").should route_to("buzzwords#new")
     end
 
-    it "routes to #show" do
-      get("/buzzwords/1").should route_to("buzzwords#show", :id => "1")
-    end
-
     it "routes to #edit" do
       get("/buzzwords/1/edit").should route_to("buzzwords#edit", :id => "1")
     end

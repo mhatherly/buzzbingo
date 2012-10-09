@@ -42,14 +42,7 @@ describe BuzzwordsController do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested buzzword as @buzzword" do
-      buzzword = Buzzword.create! valid_attributes
-      get :show, {:id => buzzword.to_param}, valid_session
-      assigns(:buzzword).should eq(buzzword)
-    end
-  end
-
+ 
   describe "GET new" do
     it "assigns a new buzzword as @buzzword" do
       get :new, {}, valid_session
