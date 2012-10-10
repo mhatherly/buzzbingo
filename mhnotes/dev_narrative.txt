@@ -432,3 +432,22 @@ the same, and we pass...
 Now for a refactor, since the routing file is kind of ugly.   Is there
 an anti function for the resources :only?   Yes - :except 
 so we didn't break anything with that change  COool!
+
+Skip item 2 for now, and on to error handling for dups
+tests first, of course
+
+Detour - I was bugged by pending not showing reason, so I fixed one
+example - apparently if you enclose it in an IT block, the reason will show
+on the second line 
+
+Fixed in help page.  
+
+OK added a bunch of tests to the index page spec,
+then messed around trying to add in icons for edit and delete. 
+
+After a lot of work and false starts, I got the icons next to the phrases
+so it is starting to look like something.  I also dropped the list into
+a container so that I could do some style things and styled the table a little
+
+However, I want to change the layout so the text for the links goes away, which
+will break the tests,   And maybe put the text for the links in the table header

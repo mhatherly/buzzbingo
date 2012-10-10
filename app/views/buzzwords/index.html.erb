@@ -1,6 +1,7 @@
+<container>
 <h1>Listing buzzwords</h1>
 
-<table>
+<table class="table" "table-striped">
   <tr>
     <th>Phrase</th>
     <th></th>
@@ -11,8 +12,23 @@
 <% @buzzwords.each do |buzzword| %>
   <tr>
     <td><%= buzzword.phrase %></td>
-     <td><%= link_to 'Edit', edit_buzzword_path(buzzword) %></td>
-    <td><%= link_to 'Destroy', buzzword, confirm: 'Are you sure?', method: :delete %></td>
+     <td>
+        <%= link_to edit_buzzword_path(buzzword) do %>
+        <i class="icon-pencil"></i>Edit  
+        <% end %>
+      </td>
+<!--
+
+-->
+
+    <td><%= link_to buzzword,
+               confirm: 'Are you sure?',
+               method: :delete do %>
+               <i class="icon-trash"></i>Destroy
+               <% end %>
+    </td>
+
+
   </tr>
 <% end %>
 </table>
@@ -20,3 +36,4 @@
 <br />
 
 <%= link_to 'New Buzzword', new_buzzword_path %>
+</container>
