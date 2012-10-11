@@ -4,8 +4,8 @@
 <table class="table" "table-striped">
   <tr>
     <th>Phrase</th>
-    <th></th>
-    <th></th>
+    <th>Edit </th>
+    <th>Destroy </th>
     <th></th>
   </tr>
 
@@ -14,17 +14,13 @@
     <td><%= buzzword.phrase %></td>
      <td>
         <%= link_to edit_buzzword_path(buzzword) do %>
-        <i class="icon-pencil"></i>Edit  
+        <i class="icon-pencil"></i>
         <% end %>
-      </td>
-<!--
-
--->
-
+    </td>
     <td><%= link_to buzzword,
                confirm: 'Are you sure?',
                method: :delete do %>
-               <i class="icon-trash"></i>Destroy
+               <i class="icon-trash"></i>
                <% end %>
     </td>
 

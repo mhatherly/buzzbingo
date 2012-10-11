@@ -16,13 +16,18 @@ describe "Buzzwords pages" do
   end 
   
   it "has a method to edit phrases" do
-    page.should have_link("Edit", href: edit_buzzword_path(buzzword))
+     
+     edit_xpath = '//a[@href="' + 
+                   edit_buzzword_path(buzzword) + 
+                   '"]/i[@class="icon-pencil"]'
+     page.should have_xpath(edit_xpath)
   end  
    
   it "has a method to destroy phrases" do
-    page.should have_link("Destroy", 
-                         href: buzzword_path(buzzword))
-                         
+     destroy_xpath = '//a[@href="' + 
+                   buzzword_path(buzzword) + 
+                   '"]/i[@class="icon-trash"]'
+     page.should have_xpath(destroy_xpath)
   end   
   
   it "has a method to add phrases" do

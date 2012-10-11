@@ -451,3 +451,21 @@ a container so that I could do some style things and styled the table a little
 
 However, I want to change the layout so the text for the links goes away, which
 will break the tests,   And maybe put the text for the links in the table header
+
+
+Done  for  edit - and here is how to test for the icons
+it "has a method to edit phrases" do
+     
+     edit_xpath = '//a[@href="' + 
+                   edit_buzzword_path(buzzword) + 
+                   '"]/i[@class="icon-pencil"]'
+   
+ 
+     page.should have_xpath(edit_xpath)
+  
+we are looking for an html tag "a" with an href of  whatever is
+in the var edit_buzzword_path(buzzword) and  within that a tag, there 
+is a subtag of i with a class of icon-pencil
+
+similar with delete.   
+      
