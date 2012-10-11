@@ -468,4 +468,8 @@ in the var edit_buzzword_path(buzzword) and  within that a tag, there
 is a subtag of i with a class of icon-pencil
 
 similar with delete.   
-      
+
+Now use a new icon and move it to the top
+
+I decided to use a button but this one is not working - routing error.
+<%= button_to 'New Buzzword', href: new_buzzword_path, class: "btn btn-primary" %>      

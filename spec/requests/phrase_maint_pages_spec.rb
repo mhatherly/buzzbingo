@@ -31,7 +31,7 @@ describe "Buzzwords pages" do
   end   
   
   it "has a method to add phrases" do
-     page.should  have_link("New", href: new_buzzword_path) 
+     page.should  have_link("New Buzzword", href: new_buzzword_path) 
   end
   
   it "does other stuff" do
