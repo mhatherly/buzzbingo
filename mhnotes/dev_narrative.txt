@@ -473,3 +473,38 @@ Now use a new icon and move it to the top
 
 I decided to use a button but this one is not working - routing error.
 <%= button_to 'New Buzzword', href: new_buzzword_path, class: "btn btn-primary" %>      
+
+Went around the button_to and now it reads
+<%= link_to 'New Buzzword', new_buzzword_path,  class: "btn  btn-primary" %>
+
+The html: parm was messing me up. 
+
+Commit
+
+Now for pagination
+need to updated buzzword controller index method from
+@buzzwords=Buzzward.all to
+  @buzzwords = Buzzword.paginate(page: params[:page], per_page:10)
+so that @buzzwords is a paginateable object
+and then drop the will_paginate method into the page where I want it.
+
+The will paginate doc says paginate can be put into the model, but that 
+seems wrong to me - paginate is a view function, and at best it should be
+in controller.   
+
+OK - this broke the scaffold generated view test for index.   
+Buzzwords/index renders a list of buzzwords
+     Failure/Error: render
+     ActionView::Template::Error:
+       The @test variable appears to be empty. Did you forget to pass the collection object for will_paginate?
+     # ./app/views/buzzwords/index.html.erb:6:in `_app_views_buzzwords_index_html_erb___752583218_90843420'
+     # ./spec/views/buzzwords/index.html.erb_spec.rb:16:in `block (2 levels) in <top (required)>'
+
+OK - now it is fixed , but not without a lot of pain.    I needed to pass
+a Will_Paginate collection object to the render command, but it needed to be
+called @test as  in order to work
+properly.   Not sure why on that one.   Learned a little bit about 
+stub_model in the meanwhile (kind of like a factory but does not call the 
+database, so the view is not dependant on the database.  (See the original 
+spec for how it was before the changes for paginate.)).    
+

@@ -3,6 +3,7 @@
   <div class=span8>
     <h1>Listing buzzwords</h1>
     <%= link_to 'New Buzzword', new_buzzword_path,  class: "btn  btn-primary" %>
+     <%= will_paginate %>
     <table class="table" "table-striped">
       <tr>
         <th>Phrase</th>
@@ -10,8 +11,9 @@
         <th>Destroy </th>
         <th></th>
       </tr>
-    
+      
     <% @buzzwords.each do |buzzword| %>
+    
       <tr>
         <td><%= buzzword.phrase %></td>
          <td>
