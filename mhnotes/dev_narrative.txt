@@ -509,7 +509,7 @@ database, so the view is not dependant on the database.  (See the original
 spec for how it was before the changes for paginate.)).    
 
 So now I have fixed 1,8,9, and labelled # 2, 10 as enhancements for later
-So now I have to fix #2 , which means testing the add function
+So now I have to fix #6 , which means testing the add function
 
 Ok so I figured out after writing a coiuple of test that the add function broke
 when I disabled the show in the controller -  because it tries to do a get  
@@ -556,4 +556,16 @@ Update : from redirect to response.should render_template("edit")
 I noticed some error condition testing where I
 think I am suppsed to fill in bad data, but I am already testing for
 them on the request side so I probably don't need to do the same.
+
+So now I am passing all specs again except pedning of course, 
+Now item 3 - duplicates
+
+After adding the test, similar to the blank test
+I get one success, since I already have an index built.   But 4 failures 
+because the database is handling the failure, not the model.   
+
+So we add uniqueness to the model, and all is happiness and light
+in the request test and in the whole set. 
+
+
 
