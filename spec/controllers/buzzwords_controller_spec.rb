@@ -24,7 +24,9 @@ describe BuzzwordsController do
   # Buzzword. As you add validations to Buzzword, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { 
+      phrase: "test buzzword" 
+    }
   end
   
   # This should return the minimal set of values that should be in the session
@@ -72,9 +74,9 @@ describe BuzzwordsController do
         assigns(:buzzword).should be_persisted
       end
 
-      it "redirects to the created buzzword" do
+      it "redirects to the edit for the created buzzword" do
         post :create, {:buzzword => valid_attributes}, valid_session
-        response.should redirect_to(Buzzword.last)
+        response.should redirect_to(edit_buzzword_path(1)) #mock
       end
     end
 
@@ -113,10 +115,10 @@ describe BuzzwordsController do
         assigns(:buzzword).should eq(buzzword)
       end
 
-      it "redirects to the buzzword" do
+      it "redirects to the buzzword edit again" do
         buzzword = Buzzword.create! valid_attributes
         put :update, {:id => buzzword.to_param, :buzzword => valid_attributes}, valid_session
-        response.should redirect_to(buzzword)
+        response.should render_template("edit")
       end
     end
 

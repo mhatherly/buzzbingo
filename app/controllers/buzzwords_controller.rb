@@ -45,10 +45,13 @@ class BuzzwordsController < ApplicationController
 
     respond_to do |format|
       if @buzzword.save
-        format.html { redirect_to @buzzword, notice: 'Buzzword was successfully created.' }
+         
+        format.html do
+          redirect_to  edit_buzzword_path(@buzzword), notice: 'Buzzword was successfully created.' 
+        end
         format.json { render json: @buzzword, status: :created, location: @buzzword }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", notice: "Buzzword was not created" }
         format.json { render json: @buzzword.errors, status: :unprocessable_entity }
       end
     end
@@ -61,7 +64,7 @@ class BuzzwordsController < ApplicationController
 
     respond_to do |format|
       if @buzzword.update_attributes(params[:buzzword])
-        format.html { redirect_to @buzzword, notice: 'Buzzword was successfully updated.' }
+        format.html { render action: "edit", notice: 'Buzzword was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

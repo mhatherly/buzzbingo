@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Buzzwords pages" do
+describe "Buzzwords Maint  pages" do
  describe "Listing page" do 
   subject {page}
    let!(:buzzword) { FactoryGirl.create(:buzzword, phrase: "Lorem Ipsum") }
@@ -38,5 +38,50 @@ describe "Buzzwords pages" do
       pending "next steps"
   end
   
-   end # listing page 
+ end # listing page 
+ describe "Buzzword Add Page"  do
+   before do
+    visit(new_buzzword_path) 
+   end
+   
+   let(:submit) { "Create Buzzword" }
+   
+    describe "has the standard features of this app's pages" do
+      it_behaves_like "Standard_Web_Page"
+    end
+   
+   describe "has a meaningful heading" do
+     it "such as New Buzzword" do
+       page.should have_css('h1', text: "New buzzword") 
+     end
+   end
+   
+   it "does not allow duplicate"  do
+          pending "duplicate gives error message" 
+   end  
+   
+   describe "does not allow blanks"  do
+     	it "a buzzword is not created if blank" do
+			expect { click_button submit }.not_to change(Buzzword, :count)  
+		end
+		describe "after submission" do
+			before {click_button submit }
+			it "should be on the 'new' page" do
+              page.should have_content('New buzzword')
+            end  # right page
+			it "should have an error message of some sort" do
+              page.should have_content('error')
+            end
+			it "should have the correct error message" do
+              page.should have_error_message("Phrase can't be blank") 
+            end
+        end #after sub
+   end  #does not allow
+   
+   it "does not allow messages that are too long "  do 
+      pending "test too long"
+  end
+   
+ end # Add page   
+
 end
