@@ -103,10 +103,37 @@ describe "Buzzwords Maint  pages" do
         end #after sub
    end  #does not allow blanks
    
-   it "does not allow messages that are too long "  do 
-      pending "test too long"
-  end
-   
+   describe "does not allow messages that are too long "  do 
+      max_length = 66
+      before do
+        fill_in :phrase,  with: "a" * (max_length + 1)
+      end
+      it "a buzzword is not created if too long" do
+			expect { click_button submit }.not_to change(Buzzword, :count)  
+		end
+		describe "after submission" do
+			before { click_button submit }
+			it "is on the 'new' page" do
+              page.should have_content('New buzzword')
+            end  # right page
+			it "has an error message of some sort" do
+              page.should have_content('error')
+            end  #error msg
+			it "has the correct error message" do
+              page.should have_error_message("Phrase is too long") 
+            end # correct err
+        end #after sub
+  end # does not allow 
+
+   describe "does allow messages that are at Maximum length "  do 
+      max_length = 66
+      before do
+        fill_in :phrase,  with: "a" * (max_length)
+      end
+      it "a buzzword is created if phrase is max length" do
+			expect { click_button submit }.to change(Buzzword, :count)  
+      end
+    end # does allow  
  end # Add page   
 
 end

@@ -373,7 +373,7 @@ Some things I notice right now
 disable that for now.
 2) A nice form for adding multiple buzzwords at the same time would be useful (enhancement)
 3) Need to fix error handling for dups in the interface
-4) The index page has Listing buzzwords as the title. 
+4) The index page has Listing buzzwords as the title.   UGLY
 5) I need to make sure something is not too long, but I don't know what too long is
 (can't be wrapped into 3 lines in a bingo cell, but I am not sure what that lenght is yet), so
 I will add an arbitary length and fix it later. 
@@ -567,5 +567,69 @@ because the database is handling the failure, not the model.
 So we add uniqueness to the model, and all is happiness and light
 in the request test and in the whole set. 
 
+Where do we stand?
+1) The show action is worthless since it only shows the same thing.   I should
+disable that for now.  DONE
+2) A nice form for adding multiple buzzwords at the same time would be useful (enhancement)
+3) Need to fix error handling for dups in the interface DONE
+4) The index page has Listing buzzwords as the title.   DO NEXT
+5) I need to make sure something is not too long, but I don't know what too long is
+(can't be wrapped into 3 lines in a bingo cell, but I am not sure what that lenght is yet), so
+I will add an arbitary length and fix it later.  PENDING
+6) Can create a zero lenght buzzword FIXED
+7) Long words force the actions far to the right  WILL BE FIXED WITH LENGTH  Maybe (#5)
+8) I know that bootstrap has some icons/widgits that might prove cute for the maint actions. 
+DONE
+9) the index screen does not paginate DONE
+10) I wonder if an edit in place is possible. (enhancement)
+
+Did #4  So now I either kick into printing design mode or into
+arbitrary lenght mode.  I do want the length and lines to be a parameter for 
+the app, so that I can change it if I go to 
+non paper  formats in later releases
+
+Lets try to go to design mode
+ So, my printed page cell will be  X characters  by 
+Y lines per cell max at smallest font.    Font will unispace to make this
+work .    
+
+First question becomes what is the smallest readable monospace font size
+
+c3 schools gives two monospace font families Lucinda looks better
+here is the css line I think
+"p{font-family: "Lucida Console", Monaco, monospace }
+FONT SIZE CALCS
+But it is not on Libre office so I think I use the old MONOSPACE
+Monospace 8 is smallest = 15 chars per inch
+Monospace 9 = 13 char per inch
+Monospace 10 = 12.5 char per inch
+Monospace 11 = 11.5 char per inch
+Monospace 12 = 10 cpi
+
+page width = 7.5 inches 
+cells = 5 so cell width is 1.5"
+so max char per line = 22 at 8,
+Assume 3 lines, so max chars = 66 chars roughly is our max
+
+Design question is: do I try to get fancier with the breaks so something
+that formats nicely in 3 lines gets accepted and something 
+that does gets rejected?   I think this should come as an enhancement
+
+So I hard code the length as 66  into the spec.
+Now have 4 failures as expected 
+
+Fonts : I don't know if that is the same as "Courier New", Courier, monospace,
+
+I think it is Liberation Monospace, but move on...
+
+After adding in lenght validation to the model - and fixing the spec syntax
+it passes.   (I even got the phrase on the error message
+correct!
+
+ Although I should test max length as well to test boundary
+conditions.     DONE and passes
 
 
+
+
+ 
