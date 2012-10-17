@@ -65,19 +65,18 @@ describe "Buzzwords Maint  pages" do
    end
    
    describe "does not allow duplicates"  do
-     dup_phrase = "To be duplicated" 
-     let!(:buzzword_orig)  { FactoryGirl.create(:buzzword, phrase: dup_phrase) } 
-     it "a buzzword is not created if duplicate" do
-        fill_in "Phrase",  with: dup_phrase
-        expect { click_button submit }.not_to change(Buzzword, :count)  
-     end
+    dup_phrase = "To be duplicated" 
+    let!(:buzzword_orig)  { FactoryGirl.create(:buzzword, 
+                                               phrase: dup_phrase) }
+    before { fill_in "Phrase",  with: dup_phrase }                                          
+    it "a buzzword is not created if duplicate" do
+       expect { click_button submit }.not_to change(Buzzword, :count)  
+    end
 
     describe "after submission" do
       before do 
-       fill_in "Phrase",  with: dup_phrase
        click_button submit 
       end
-      
       it "should be on the 'new' page" do
         page.should have_css(page_id_css_tag, text: page_id_string)
       end  # right page
