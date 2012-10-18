@@ -5,7 +5,7 @@ shared_examples "edit_page_with_error" do |page_id_css_tag,
       before do 
        click_button submit 
       end
-      it "should be on the 'new' page" do
+      it "should be on the Edit page" do
         page.should have_css(page_id_css_tag, text: page_id_string)
       end  # right page
       

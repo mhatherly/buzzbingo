@@ -114,74 +114,58 @@ describe "Buzzwords Maint  pages" do
   end # Add page   
  
  
-describe "Buzzword Edit Page"  do
-   let!(:buzzword)  { FactoryGirl.create(:buzzword, 
+  describe "Buzzword Edit Page"  do
+   
+    page_id_string = "Editing buzzword"
+    page_id_css_tag = "h1"
+   
+    let!(:buzzword)  { FactoryGirl.create(:buzzword, 
                       phrase: "Lorem Ipsom",  
                       updated_at: 10.minutes.ago) } 
-   let(:submit) { "Update Buzzword" }
-   before do
+    let(:submit) { "Update Buzzword" }
+    
+    before do
      visit(edit_buzzword_path(buzzword)) 
-   end
+    end
    
-   describe "has the standard features of this app's pages" do
+    describe "has the standard features of this app's pages" do
       it_behaves_like "Standard_Web_Page"
     end
    
-   describe "has a meaningful heading" do
-     it "such as Editing Buzzword" do
-       page.should have_css('h1', text: "Editing buzzword") 
-     end
-   end
+    describe "has a meaningful heading" do
+      it "such as #{page_id_string }" do
+       page.should have_css(page_id_css_tag, text: page_id_string ) 
+      end
+    end
    
-   describe "does not allow duplicates"  do
-        
-           dup_phrase = "To be duplicated" 
-            let!(:buzzword_orig)  { FactoryGirl.create(:buzzword, 
+    describe "does not allow duplicates"  do
+    
+      dup_phrase = "To be duplicated" 
+      let!(:buzzword_orig)  { FactoryGirl.create(:buzzword, 
                                           phrase: dup_phrase,
                                           updated_at: 10.minutes.ago) } 
-            before do
-             fill_in "Phrase",  with: dup_phrase
-            end 
-          	it "a buzzword is not updated if duplicate" do
-                expect { click_button submit }.not_to change{
+      before do
+          fill_in "Phrase",  with: dup_phrase
+      end 
+      it "a buzzword is not updated if duplicate" do
+         expect { click_button submit }.not_to change{
                    Buzzword.find_by_id(buzzword_orig).updated_at 
                  }
-            end
-            describe "after submission" do
-                before do 
-                  click_button submit 
-                end
-                it "should be on the 'Edit' page" do
-                    page.should have_content('Editing buzzword')
-                end  # right page
-                it "should have an error message of some sort" do
-                page.should have_content('error')
-                end
-                it "should have the correct error message" do
-                    page.should have_error_message("Phrase has already been taken") 
-                end
-        end #after sub
-   end  
+      end
+      it_should_behave_like "edit_page_with_error", page_id_css_tag,
+                                                  page_id_string,
+                                    "Phrase has already been taken"
+   end # no duplicates  
    
    describe "does not allow blanks"  do
-     	before {fill_in :phrase, with: nil}
-        it "a buzzword is not updated if blank" do
-            
-            expect { click_button submit }.not_to change{
+     before {fill_in :phrase, with: nil}
+      it "a buzzword is not updated if blank" do
+        expect { click_button submit }.not_to change{
                  Buzzword.find_by_id(buzzword).updated_at } 
- 		end
-		describe "after submission" do
-			before { click_button submit }
-			it "is on the 'Editing' page" do
-              page.should have_content('Editing buzzword')
-            end  # right page
-			it "has an error message of some sort" do
-              page.should have_content('error')
-            end  #error msg
-			it "has the correct error message" do
-              page.should have_error_message("Phrase can't be blank") 
-            end # correct err msg
-        end #after sub
+      end
+      it_should_behave_like "edit_page_with_error", page_id_css_tag,
+                                                  page_id_string,
+                                                  "Phrase can't be blank" 
    end  #does not allow blanks
    
    describe "does not allow phrases that are too long "  do 
@@ -193,19 +177,10 @@ describe "Buzzword Edit Page"  do
             expect { click_button submit }.not_to change{
                  Buzzword.find_by_id(buzzword).updated_at }
 		end
-		describe "after submission" do
-			before { click_button submit }
-			it "is on the 'Update' page" do
-              page.should have_content('Editing buzzword')
-            end  # right page
-			it "has an error message of some sort" do
-              page.should have_content('error')
-            end  #error msg
-			it "has the correct error message" do
-              page.should have_error_message("Phrase is too long") 
-            end # correct err
-        end #after sub
-  end # does not allow 
+		it_should_behave_like "edit_page_with_error", page_id_css_tag,
+                                                  page_id_string,
+                                                  "Phrase is too long"
+   end # does not allow 
 
    describe "does allow phrases at maximum length "  do 
       max_length = 66
