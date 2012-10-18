@@ -677,3 +677,25 @@ The edit page shared example is the same as the add page shared example except
 for two lines, so I can combine them into something called maint_page_with_error 
 in a file called maint_page_shared_examples.rb
 
+Worked just fine.  
+
+I have a couple of other things to do with the maint pages:
+1) test the pagination
+2) Test deletion
+3) test and implement alphabetical sorting of the buzzwords
+but I think I will do some system maint first.
+
+OK back up and I started to think about pagination - the paginate bar wraps
+when I have 12, rather than scrolls or other behaviour - I wonder if I can 
+limit that 
+
+Answer - Yes - will_paginate takes a param to show how many  links
+at the ends, and how many around the page - default is 2 and 4, which 
+causes 12 links, and I only have room for 11 before the next link ends
+up wrapping.    So I implemented this:
+ <%= will_paginate @buzzwords, outer_window: 1, inner_window: 3 %>
+ 
+ and I also removed the extra button at the end.
+ 
+
+
