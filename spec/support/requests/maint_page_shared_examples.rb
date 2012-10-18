@@ -1,11 +1,11 @@
-shared_examples "add_page_with_error" do |page_id_css_tag, 
+shared_examples "maint_page_with_error" do |page_id_css_tag, 
                                           page_id_string,
                                           error_msg|
  describe "after submission" do
       before do 
        click_button submit 
       end
-      it "should be on the 'new' page" do
+      it "should be on the #{page_id_string} page" do
         page.should have_css(page_id_css_tag, text: page_id_string)
       end  # right page
       

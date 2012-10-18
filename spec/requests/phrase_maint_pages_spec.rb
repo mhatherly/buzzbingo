@@ -76,7 +76,7 @@ describe "Buzzwords Maint  pages" do
     it "a buzzword is not created if duplicate" do
        expect { click_button submit }.not_to change(Buzzword, :count)  
     end
-    it_should_behave_like "add_page_with_error", page_id_css_tag,
+    it_should_behave_like "maint_page_with_error", page_id_css_tag,
                                                   page_id_string,
                                     "Phrase has already been taken"
   
@@ -86,7 +86,7 @@ describe "Buzzwords Maint  pages" do
     it "a buzzword is not created if blank" do
      expect { click_button submit }.not_to change(Buzzword, :count)  
     end
-     it_should_behave_like "add_page_with_error", page_id_css_tag,
+     it_should_behave_like "maint_page_with_error", page_id_css_tag,
                                                   page_id_string,
                                                 "Phrase can't be blank" 
      end  #does not allow blanks
@@ -98,7 +98,7 @@ describe "Buzzwords Maint  pages" do
     it "a buzzword is not created if too long" do
      expect { click_button submit }.not_to change(Buzzword, :count)  
     end
-    it_should_behave_like "add_page_with_error", page_id_css_tag,
+    it_should_behave_like "maint_page_with_error", page_id_css_tag,
                                                   page_id_string,
                                                 "Phrase is too long" 
     end # does not allow 
@@ -152,7 +152,7 @@ describe "Buzzwords Maint  pages" do
                    Buzzword.find_by_id(buzzword_orig).updated_at 
                  }
       end
-      it_should_behave_like "edit_page_with_error", page_id_css_tag,
+      it_should_behave_like "maint_page_with_error", page_id_css_tag,
                                                   page_id_string,
                                     "Phrase has already been taken"
    end # no duplicates  
@@ -163,7 +163,7 @@ describe "Buzzwords Maint  pages" do
         expect { click_button submit }.not_to change{
                  Buzzword.find_by_id(buzzword).updated_at } 
       end
-      it_should_behave_like "edit_page_with_error", page_id_css_tag,
+      it_should_behave_like "maint_page_with_error", page_id_css_tag,
                                                   page_id_string,
                                                   "Phrase can't be blank" 
    end  #does not allow blanks
@@ -177,10 +177,10 @@ describe "Buzzwords Maint  pages" do
             expect { click_button submit }.not_to change{
                  Buzzword.find_by_id(buzzword).updated_at }
 		end
-		it_should_behave_like "edit_page_with_error", page_id_css_tag,
+		it_should_behave_like "maint_page_with_error", page_id_css_tag,
                                                   page_id_string,
                                                   "Phrase is too long"
-   end # does not allow 
+   end # does not allow too long 
 
    describe "does allow phrases at maximum length "  do 
       max_length = 66

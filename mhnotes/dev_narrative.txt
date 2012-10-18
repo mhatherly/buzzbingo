@@ -672,3 +672,8 @@ then I can pass them to the shared examples.
 So I created one that defines the tests for an add page error.   The update
 page is similar, so I should be able to tweak that, but first let me create
 the edit_page_with_error shared example. 
+
+The edit page shared example is the same as the add page shared example except
+for two lines, so I can combine them into something called maint_page_with_error 
+in a file called maint_page_shared_examples.rb
+
