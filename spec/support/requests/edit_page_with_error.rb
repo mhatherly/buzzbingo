@@ -1,4 +1,4 @@
-shared_examples "add_page_with_error" do |page_id_css_tag, 
+shared_examples "edit_page_with_error" do |page_id_css_tag, 
                                           page_id_string,
                                           error_msg|
  describe "after submission" do

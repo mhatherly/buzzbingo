@@ -658,3 +658,17 @@ OK fixed all the update, but lets see if I can fix that ugly looking bracked
 in expect with a do - nope error message tells me bad- let it stand
                 
 OK, now I need to clean up my specs, they are looking a little ragged..
+
+I have been messing around with shared examples -my first pass was a little 
+ugly, but I think I have it figured out.    
+if I define things with let - they do not get passed to the shared example,
+for some reason - and it is really hard to go from a let to a concrete object. 
+let definitions seem only to work within describe and it contexts, or something
+like that.    They seem elusive. 
+
+So I need to use straight variables, and need to define them at the right level, 
+then I can pass them to the shared examples.     
+
+So I created one that defines the tests for an add page error.   The update
+page is similar, so I should be able to tweak that, but first let me create
+the edit_page_with_error shared example. 

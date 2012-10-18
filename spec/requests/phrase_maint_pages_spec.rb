@@ -1,8 +1,11 @@
 require 'spec_helper'
 
+     
+
 describe "Buzzwords Maint  pages" do
   # This parameter might change as I refine, so I will parametize it
   # The max length of a buzzword phrase
+  
   max_length = 66
  describe "Listing page" do 
   subject {page}
@@ -49,17 +52,18 @@ describe "Buzzwords Maint  pages" do
    page_id_css_tag = "h1"
    
    before do
-    visit(new_buzzword_path) 
+     visit(new_buzzword_path) 
    end
    
    let(:submit) { "Create Buzzword" }
    
    describe "has the standard features of this app's pages" do
-     it_behaves_like "Standard_Web_Page"
+     it_behaves_like "Standard_Web_Page" 
     end
    
    describe "has a meaningful heading" do
-     it "such as #{page_id_string}" do
+      puts :page_id_string
+     it ("such as #{page_id_string}" )  do
        page.should have_css(page_id_css_tag, text: page_id_string) 
      end
    end
@@ -72,42 +76,20 @@ describe "Buzzwords Maint  pages" do
     it "a buzzword is not created if duplicate" do
        expect { click_button submit }.not_to change(Buzzword, :count)  
     end
-
-    describe "after submission" do
-      before do 
-       click_button submit 
-      end
-      it "should be on the 'new' page" do
-        page.should have_css(page_id_css_tag, text: page_id_string)
-      end  # right page
-      
-      it "should have an error message of some sort" do
-       page.should have_content('error')
-      end
-      
-      it "should have the correct error message" do
-        page.should have_error_message("Phrase has already been taken") 
-      end
-    end #after sub
+    it_should_behave_like "add_page_with_error", page_id_css_tag,
+                                                  page_id_string,
+                                    "Phrase has already been taken"
+  
    end  #does not allow duplicates
    
    describe "does not allow blanks"  do
     it "a buzzword is not created if blank" do
      expect { click_button submit }.not_to change(Buzzword, :count)  
     end
-    describe "after submission" do
-     before { click_button submit }
-     it "is on the Add Buzzword page" do
-      page.should have_css(page_id_css_tag, text: page_id_string)
-     end  # right page
-     it "has an error message of some sort" do
-      page.should have_content('error')
-     end  #error msg
-     it "has the correct error message" do
-       page.should have_error_message("Phrase can't be blank") 
-     end # correct err
-    end #after submission
-   end  #does not allow blanks
+     it_should_behave_like "add_page_with_error", page_id_css_tag,
+                                                  page_id_string,
+                                                "Phrase can't be blank" 
+     end  #does not allow blanks
    
    describe "does not allow messages that are too long "  do 
     before do
@@ -116,19 +98,10 @@ describe "Buzzwords Maint  pages" do
     it "a buzzword is not created if too long" do
      expect { click_button submit }.not_to change(Buzzword, :count)  
     end
-    describe "after submission" do
-     before { click_button submit }
-     it "should be on the 'new' page" do
-        page.should have_css(page_id_css_tag, text: page_id_string)
-      end  # right page
-     it "has an error message of some sort" do
-      page.should have_content('error')
-     end  #error msg
-     it "has the correct error message" do
-       page.should have_error_message("Phrase is too long") 
-     end # correct err
-    end #after sub
-   end # does not allow 
+    it_should_behave_like "add_page_with_error", page_id_css_tag,
+                                                  page_id_string,
+                                                "Phrase is too long" 
+    end # does not allow 
 
    describe "does allow messages that are at Maximum length "  do 
     before do
@@ -166,16 +139,16 @@ describe "Buzzword Edit Page"  do
             let!(:buzzword_orig)  { FactoryGirl.create(:buzzword, 
                                           phrase: dup_phrase,
                                           updated_at: 10.minutes.ago) } 
-
+            before do
+             fill_in "Phrase",  with: dup_phrase
+            end 
           	it "a buzzword is not updated if duplicate" do
-                fill_in "Phrase",  with: dup_phrase
                 expect { click_button submit }.not_to change{
                    Buzzword.find_by_id(buzzword_orig).updated_at 
                  }
             end
             describe "after submission" do
                 before do 
-                  fill_in "Phrase",  with: dup_phrase
                   click_button submit 
                 end
                 it "should be on the 'Edit' page" do
