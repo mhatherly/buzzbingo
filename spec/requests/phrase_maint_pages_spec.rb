@@ -40,7 +40,33 @@ describe "Buzzwords Maint  pages" do
      page.should  have_link("New Buzzword", href: new_buzzword_path) 
   end
   
-  it "does other stuff" do
+  describe "has pagination" do
+     
+     before do 
+     # create enough  buzzwords to only fill the page
+        9.times  do |i|
+          FactoryGirl.create(:buzzword, phrase: "test phrase #{i +1}") 
+          visit(buzzwords_path) 
+        end 
+     end
+     it "does not paginate at 10 records" do
+        test_href = buzzwords_path + '?page=2'
+        page.should_not have_link("2", href: test_href)
+     end
+     
+     describe "does paginate at 11 records" do
+       before  do
+         FactoryGirl.create(:buzzword, phrase: "zzz phrase 10")
+          visit(buzzwords_path) 
+       end  
+        it "has a link to page 2" do
+          test_href = buzzwords_path + '?page=2'
+          page.should have_link("2", href: test_href)
+        end
+      end
+  end
+  it "does deletes" do
+  
       pending "next steps"
   end
   

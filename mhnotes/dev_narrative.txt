@@ -697,5 +697,10 @@ up wrapping.    So I implemented this:
  
  and I also removed the extra button at the end.
  
+ So next step is to test pagination.  
+ 
+ Wrote a pagination test for the listing page.   One interesting
+ fact is that buzzword_path variable does not go into existance at the
+ top level (perhaps visit page creates it) 
 
 
