@@ -703,4 +703,79 @@ up wrapping.    So I implemented this:
  fact is that buzzword_path variable does not go into existance at the
  top level (perhaps visit page creates it) 
 
+Now working on testing the delete from the listing page.   I thought I 
+was running into trouble with the confirm dialogue, but it turns out
+not to be the case.   I had been testing this with an xpath, since I 
+don't have text to find, rather, the delete function is an icon.  One of an 
+earlier test was to test if I had an icon for a line so it was set up like this
+it "has a method to destroy phrases" do
+     destroy_xpath = '//a[@href="' + 
+                   buzzword_path(buzzword) + 
+                   '"]/i[@class="icon-trash"]'
+     page.should have_xpath(destroy_xpath)
+  end   
+
+Note that I said this is an ICON so I tried this on the click function
+
+describe "does deletes" do
+        let!(:buzz2) { FactoryGirl.create(:buzzword,phrase: "Leave this one") }       
+        it "destroys records" do
+         destroy_xpath = '//a[@href="' + 
+                   Rails.application.routes.url_helpers.buzzword_path(Buzzword.first) + 
+                   '"]/i[@class="icon-trash"]' 
+                
+        page.should have_xpath(destroy_xpath)   
+        
+        expect{
+        find(:xpath, destroy_xpath).click}.to change(Buzzword, :count).by(-1)
+       end
+  end 
+
+And it was not working.   I thought it was the confirm dialog that 
+was causing the problem, so I removed it from the view, but no go.
+
+After hunting around, I saw some hints that said "make sure you have the 
+xpath to the <a> attribute,  which was the parent of the icon.   
+
+So I adjusted my xpath to go up one level like this 
+
+destroy_xpath = '//a[@href="' + 
+                   Rails.application.routes.url_helpers.buzzword_path(Buzzword.first) + 
+                   '"]/i[@class="icon-trash"]/..' 
+
+by adding /.. to the end of the Xpath and viola! we are good, with or 
+without the confirm dialog.     (RackTest does not support javascript, so I though that
+might screw us up, but it apparently ignores the dialog.
+
+I also figured out what the relationship is between Capybara and Selinium(Something
+I have seen in a lot of places but never understood.     Selinium takes the place of
+default RackTest and acts as a browser or browser controller and Capybara handles the
+testing logic and presents the page to the testing mechanism.    
+So capybara and Selinium are cooperators rather than alternatives.  
+
+I am not quite sure yet where the line is, for example click-on seems to
+be a capybara method.   whereas switch_to (as in dialog box) is selinim.
+some places call selium a web driver.   And selinim is basically the java
+script driver.  and it also comes with basic Rails 3... 
+
+OK now I broke something in the controller testing and my spec - the records seem
+to be getting messed up.   
+
+It is the thing to figure out next....
+
+For some reason my test db had a record from yesterday.
+
+OK I think I figured out something about what was going on.
+
+1) I did have a record in the test db.   Not sure why - it should have rolled back.  That I think made t
+the controller tests fail.  
+2) I was not revisiting the listing page after adding the second record.   That caused
+failures since the record wasn;t displayed, so I couldn't delete it. 
+
+So I deleted the record manually
+then added the before to revisit the page, now all works
+
+
+Now all test suite 
+
 

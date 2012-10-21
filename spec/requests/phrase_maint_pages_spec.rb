@@ -16,8 +16,14 @@ describe "Buzzwords Maint  pages" do
   describe "has the standard features of this app's pages" do
       it_behaves_like "Standard_Web_Page"
   end
+  describe "displays the buzzwords" do
+   it "has the created buzzword" do
+      page.should have_content(buzzword.phrase)
+    end
+   end 
+  
   it "does not have a show link" do
-    page.should have_content(buzzword.phrase) 
+     
     page.should_not have_link("Show")  
   end 
   
@@ -65,10 +71,21 @@ describe "Buzzwords Maint  pages" do
         end
       end
   end
-  it "does deletes" do
-  
-      pending "next steps"
-  end
+  describe "does deletes" do
+    let!(:buzz2) { FactoryGirl.create(:buzzword,phrase: "Delete this one") }  
+    before {visit buzzwords_path}
+    it "destroys records" do
+     destroy_xpath = '//a[@href="' + 
+               Rails.application.routes.url_helpers.buzzword_path(buzz2) + 
+               '"]/i[@class="icon-trash"]/..' 
+               # the trailing /.. selects the attribute rather than the icon
+    
+     page.should have_xpath(destroy_xpath)   
+    
+     expect{
+      find(:xpath, destroy_xpath).click}.to change(Buzzword, :count).by(-1)
+    end
+  end 
   
  end # listing page 
  describe "Buzzword Add Page"  do
