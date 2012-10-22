@@ -20,6 +20,30 @@ describe "Buzzwords Maint  pages" do
    it "has the created buzzword" do
       page.should have_content(buzzword.phrase)
     end
+    describe "shows buzzwords in alphabetical order"  do
+      let!(:firstbuzz) { FactoryGirl.create(:buzzword, phrase: "AAAA")}
+      before {visit buzzwords_path}
+      describe "the test phrases are in the correct order" do
+        data_table_xpath = '//table[@id="buzztable"]'
+        # first tr will have header so we do second and third
+        
+        
+        it "with the AAAA buzzword in the first row"  do
+             data_row_xpath_1stlinephrase = data_table_xpath +                 
+                '//tr[2]/td//text()[contains(.,"'+ firstbuzz.phrase + '")]'
+            page.should have_xpath(data_row_xpath_1stlinephrase)
+        end
+        it "with the standard phrase in the second row"  do
+           data_row_xpath_2ndlinephrase = data_table_xpath + 
+                   '//tr[3]/td//text()[contains(.,"'+ buzzword.phrase + '")]'
+         
+         page.should have_xpath(data_row_xpath_2ndlinephrase)  
+        end
+       
+       
+      end  
+    
+    end
    end 
   
   it "does not have a show link" do

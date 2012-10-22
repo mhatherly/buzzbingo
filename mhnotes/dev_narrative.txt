@@ -776,6 +776,45 @@ So I deleted the record manually
 then added the before to revisit the page, now all works
 
 
-Now all test suite 
+Now all test suite is good.
 
+Next for alpha order
+
+After messing around with xpaths and adding an id to the data table 
+I was able to verify the text in order with two buzzwods one created early
+and another created afterward with a higher sort order (All cap A's)
+
+The xpath for the data table was a little tricky because I wanted the 
+second and third rows in the table - the first row contains th elements, 
+the second and third get td,   I started adding pieces to the 
+xpath and verifying that they were good.   So my test looks like this
+
+describe "shows buzzwords in alphabetical order"  do
+      let!(:firstbuzz) { FactoryGirl.create(:buzzword, phrase: "AAAA")}
+      before {visit buzzwords_path}
+      describe "the test phrases are in the correct order" do
+        data_table_xpath = '//table[@id="buzztable"]'
+        # first tr will have header so we do second and third
+        
+        
+        it "with the AAAA buzzword in the first row"  do
+             data_row_xpath_1stlinephrase = data_table_xpath +                 
+                '//tr[2]/td//text()[contains(.,"'+ firstbuzz.phrase + '")]'
+            page.should have_xpath(data_row_xpath_1stlinephrase)
+        end
+buzzword is the standard test record already set in the parent.   
+we are looking for the second table row //tr[2] (double slashes to bypass 
+tbody and other intermediate html).  with a td element with text contaiing. 
+
+and a similar test to see that the second record is in the third row
+
+The implementation was much easier than the test - just add Buzzword.order(:phrase) in
+the index controller.   Presto - although I forgot that Lorem will sort before lower case
+aaa and had to tweak my test.
+
+Time to commit and merge. 
+
+One thing I don't like about the maint pages that I will list as an enhancement
+is that after editing, you come back to the main listing on page 1 rather than the
+page you were on. 
 
