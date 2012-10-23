@@ -825,6 +825,20 @@ One thing I don't like about the maint pages that I will list as an enhancement
 is that after editing, you come back to the main listing on page 1 rather than the
 page you were on.   Seee http://42linesofcode.com/ for a solution
 
-I did notice that we have a show link on the edit and add form.    Time
+I did notice that we have a show link on the edit  form.    Time
 to fix that. 
+
+Now in the model specs, in Rails by example, we did a fair number of validation
+tests for the models.  Here it is pretty simple, I can only get a phrase too
+long or to0 short(zero) , and I am already testing those.  But I will put those
+in the models as well.
+
+I also check accessability of the attribute and the id.
+
+I thnk that is all I need, and I am down to two pending and one is the help
+screen.   Time to merge back.
+
+
+
+
 
