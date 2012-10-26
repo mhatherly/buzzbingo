@@ -75,8 +75,8 @@ describe BuzzwordsController do
       end
 
       it "redirects to the edit for the created buzzword" do
-        post :create, {:buzzword => valid_attributes}, valid_session
-        response.should redirect_to(edit_buzzword_path(1)) #mock
+        post :create, {:buzzword => valid_attributes, :id => 1}, valid_session
+        response.should redirect_to (edit_buzzword_path(Buzzword.last)) 
       end
     end
 

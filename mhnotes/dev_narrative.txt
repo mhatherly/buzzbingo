@@ -838,6 +838,24 @@ I also check accessability of the attribute and the id.
 I thnk that is all I need, and I am down to two pending and one is the help
 screen.   Time to merge back.
 
+Done, and loaded up to github and heroku and it works!
+
+Time to write some specs for puzzle page
+I was looking at using some sort of persistant set of data
+by using before :all, in order to make the test run faster, but
+I think I will save that until I get my tests working correctly
+
+OK after a long set of experimentation, I have 
+added two class methods to Buzzword.  One copied, 
+that picks random sets from a database,  and one that picks the
+right number for a puzzle.   
+
+I tested for randomness, and it seems to be random, although I can't figure
+out exactly how, since it is working from max id and not the set of id's.
+
+I will need to revisit random when I add subjects, anyway.
+
+
 
 
 
