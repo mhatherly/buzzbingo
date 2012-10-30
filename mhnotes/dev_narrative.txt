@@ -855,7 +855,25 @@ out exactly how, since it is working from max id and not the set of id's.
 
 I will need to revisit random when I add subjects, anyway.
 
+OK I tried running the complete spec package and got a failure in the
+controller spec because the edit function had (edit_buzzword_path(1)) test
+with the (1) hardcoded.   When I ran my spec test for random, I created a lot
+of records and did not reset the id count when I exited (even though I deleted all
+the records).  So I fixed that with by changing to (edit_buzzword_path(Buzzword.last)), which
+violates the separation principle a little since it is going after the db, but
+I will live with it.
 
+So now all test but the page test pass, and I committed.  
+
+I forgot to branch last time, so I just did now to complete the 
+puzzle page and controller
+
+I suppose I should write a puzzle controller test first
+
+My controller test is modeled on the genearate one, but I am not sure exactly
+what I am testing, since my factory will create records slighly different and in
+slightly different order.   So I just counted.   Not sure that is a legit test, but
+I will move on.  
 
 
 
