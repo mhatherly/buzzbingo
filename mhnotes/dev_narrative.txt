@@ -873,7 +873,46 @@ I suppose I should write a puzzle controller test first
 My controller test is modeled on the genearate one, but I am not sure exactly
 what I am testing, since my factory will create records slighly different and in
 slightly different order.   So I just counted.   Not sure that is a legit test, but
-I will move on.  
+I will move on.    
+
+I also fixed the puzzle route and controller to go to puzzle instead of new
+
+OK  I wrote a test to count the cells, and realize that I shold pass a 25 
+array with phrases only, and wih FREE in the correct spot,   and that means 
+that i do that in the controller or model.   more tests there ..  
+
+OK should be in model to return 24 phrases in an array.   
+
+After more thought, I figured it was just as easy to make the model return
+a FREE space, but I made it as an option, which led me into 
+named paramters and the fact that false and true are different classes (no boolean class or
+type)
+So I wrote a lot of extra code including raising and testing exceptions, which
+was a lot of exploration.   Not sure I have it idiomatically right, but it is working
+
+Now my controller test fails because I am returning the wrong number. 
+
+ Fixed, now messing with page iteself.   I had a hell of time finding the
+ correct xpath for the center cell, since I thought the count started at 
+ zero (it does not) and since I thought I had to count the table header 
+ tag (I don't because of the match)  Here it is broken down
+center_cell =  
+        '//tr[3]/td[3]//text()[contains(.,"FREE")]'
+ 
+ Here is the explaination for the match:
+ 
+ within the table there are two nodes thead and tbody
+ so the // in the first chars will find a node that has a third <tr> tag.  
+  It will
+ look at the <tr> in the thead node, but it stops when it comes to the <thead> and
+ starts its count over within the tbody node.
+ 
+ 
+ 
+ 
+        
+
+
 
 
 

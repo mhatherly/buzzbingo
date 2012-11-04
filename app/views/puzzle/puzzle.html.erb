@@ -2,13 +2,32 @@
   <div class=span1></div>
   <div class=span8>
     <h1>BINGO</h1>
+    <% if @buzzwords.nil? %>
+      <h3> SORRY! Not Enough Buzzwords in database to give you a card!</h3>
+       <% else %>
     <table id="puzzle" class="table table-bordered">
+      
+     
       <thead>
         <tr>
             <th>B</th><th>I</th><th>N</th><th>G</th><th>O</th>
         </tr>
-      </thead>
         
+      </thead>
+       <tbody>
+         <% @buzzwords.each_slice(5) do |five_phrases|  %>
+         <tr>
+           <% five_phrases.each do |phrase| %>
+           <td><%= phrase %></td>
+           <% end %>
+          </tr>
+          <% end %> 
+           
+       </tbody> 
     </table>
+     
+    <%= link_to("Give me another Bingo Card!",puzzle_path,class:"btn btn-primary", id: "generate") %>
+    <% end %>
+    
   </div>
 </div>

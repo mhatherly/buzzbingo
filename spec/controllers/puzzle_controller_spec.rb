@@ -11,7 +11,7 @@ require 'spec_helper'
        buzzwords[i] = FactoryGirl.create(:buzzword, phrase: "Controller Test #{i +1}")
     end  
     get :puzzle
-    assigns(:buzzwords).count.should eq(buzzwords.count)
+    assigns(:buzzwords).count.should eq(buzzwords.count + 1) # free space
     
    end
    it "renders the puzzle view" do
