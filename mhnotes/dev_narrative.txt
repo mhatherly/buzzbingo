@@ -945,6 +945,24 @@ So I will not mess with that in this realease.
 
 I marked up a printed copy for things to style
 
+Did some styling - discovered I needed to use raw on the application
+helper method I used for inserting the class in the puzzle grid.
+
+I was reasonably happy with the way the pages turned out when I arbitrarily called
+a 40+ char phrase large, a 21+-40 char med, and a 20 or less char small,
+and then used 2 point font differences.    
+
+I still need to implement force wrapping on long words (like we did in
+the turorial app. 
+
+
+I also need to mess with print styling in the asset pipeline.  
+
+In the meantime, I can fix a couple of smaller items.   Like the home page link
+to the puzzle.  DONE
+
+
+
  
  
         
