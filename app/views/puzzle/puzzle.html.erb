@@ -18,7 +18,7 @@
          <% @buzzwords.each_slice(5) do |five_phrases|  %>
          <tr>
            <% five_phrases.each do |phrase| %>
-            <%= phrase_class(phrase) %> <%= phrase %> </td> 
+            <%= phrase_class(phrase) %> <%= wrap(phrase) %> </td> 
 
            
            

@@ -961,6 +961,9 @@ I also need to mess with print styling in the asset pipeline.
 In the meantime, I can fix a couple of smaller items.   Like the home page link
 to the puzzle.  DONE
 
+OK I stole the wrap function and put in in the application helper 
+since I can't put it in a buzzword helper since it is no longer a buzzword.
+
 
 
  
