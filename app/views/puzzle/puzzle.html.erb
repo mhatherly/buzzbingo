@@ -1,7 +1,7 @@
 <div class=container>
   <div class=span1></div>
   <div class=span8>
-    <h1>BINGO</h1>
+  
     <% if @buzzwords.nil? %>
       <h3> SORRY! Not Enough Buzzwords in database to give you a card!</h3>
        <% else %>
@@ -18,16 +18,25 @@
          <% @buzzwords.each_slice(5) do |five_phrases|  %>
          <tr>
            <% five_phrases.each do |phrase| %>
-           <td><%= phrase %></td>
+            <%= phrase_class(phrase) %> <%= phrase %> </td> 
+
+           
+           
            <% end %>
           </tr>
           <% end %> 
            
        </tbody> 
     </table>
-     
-    <%= link_to("Give me another Bingo Card!",puzzle_path,class:"btn btn-primary", id: "generate") %>
-    <% end %>
-    
-  </div>
+ 
+   </div>
 </div>
+<div class=container>
+  <div class=span2>&nbsp; </div>
+  
+  <div class=span8>
+  <%= link_to("Give me another Bingo Card!",puzzle_path,class:"btn btn-primary", id: "generate") %>
+   <% end %> 
+ </div>
+</div>  
+ 

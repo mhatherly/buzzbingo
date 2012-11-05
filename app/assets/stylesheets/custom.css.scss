@@ -6,7 +6,7 @@ $bbLightYellow: #FFFFCC;
 $bbLogoPurple: #e2e0ed;  /* a faded version of bbPurple */
 
 
-/* bootstap variables */
+/* bootstrap variables */
 $navbarBackground: $bbPurple; /* try royal purple */
 $navbarLinkColor: $bbYellow; /* yellow */
 $navbarLinkColorHover: $bbGold; /*gold */
@@ -40,4 +40,32 @@ div#home_aside {
     background-image: -moz-linear-gradient(center top , white, #3D368B);
     background-repeat: repeat-x;
     &:hover {color: $bbGold; }
+}
+td.FREE { 
+   font-size: 22px;
+   font-weight:bold;
+   color: $bbPurple;
+}
+td.short {
+  font-size: 18px;
+}
+td.med  {
+  font-size: 14px;
+}
+
+td.long {
+  font-size: 12px;
+}
+
+table#puzzle td{
+  text-align:center;
+  vertical-align: middle;
+
+}
+table#puzzle th{
+  background: $bbLogoPurple;
+  text-align:center;
+}
+table#puzzle { 
+table-layout:fixed
 }

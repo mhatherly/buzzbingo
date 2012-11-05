@@ -907,7 +907,44 @@ center_cell =
  look at the <tr> in the thead node, but it stops when it comes to the <thead> and
  starts its count over within the tbody node.
  
- 
+added the generate a new puzzle button.
+then wrote some more specs for it.   A bit of a challenge to figure
+out how to return elements from the page and compare
+("The pressing the button should give a new puzzle" test)
+but using the find and capybara text methods to get the content of 
+3 arbitrary cells, I concatenated them toghether and the chances are quite low
+that a random regenerate would place the same 3 buzzwords in the same place
+I suppose I could have built a really long string using all the elements, but
+not worth it.  
+
+commit get basic puzzle page working
+
+Now for some styling and figuring out wrapping, centering text, printing
+
+First, let us center the table headings 
+
+done - easy.  aslo the table columns
+set the table to fixed width columns to fixed also easy
+where it gets ugly is when we have a long word (>18 chars) does not wrap
+and flows into the next cell
+
+and when we have a long phrase ("Business-focused bandwidth-monitored process improvement" goes to 
+6 lines and then that row gets really tall and messes with the symetry   
+
+Right now, I do not have any variation in font size, so it is
+time to play with that.   Also, a special id for the FREE space is needed so
+I can style that a little
+
+Also, I need to validate the model not to allow FREE as a phrase so
+that we don't have two FREE's in a space.
+
+So I think we need some html manipulation here in the puzzle page.   
+
+BTW, my research says that tables are really hard to get fixed height
+So I will not mess with that in this realease.
+
+I marked up a printed copy for things to style
+
  
  
         
