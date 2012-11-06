@@ -964,6 +964,14 @@ to the puzzle.  DONE
 OK I stole the wrap function and put in in the application helper 
 since I can't put it in a buzzword helper since it is no longer a buzzword.
 
+There  maybe a better place for it, but I can't think of one right now
+
+Did another commit and then had my first failure due to randomness on the
+single select test.   The rerun of course did not have such a test failure.
+
+Updated model to refuse an entry of FREE free or Free, "Free to fly" still
+works
+
 
 
  

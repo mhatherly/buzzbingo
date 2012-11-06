@@ -1,7 +1,9 @@
 class Buzzword < ActiveRecord::Base
   attr_accessible :phrase
-  validates :phrase, presence: true, uniqueness: true, 
-            :length => { :maximum => 66 }
+  validates :phrase, presence: true, 
+                     uniqueness: true, 
+                     length: { maximum: 66 }, 
+                     exclusion: { in: %w(FREE free Free) } 
   def self.random_puzzle_set(opts = {})
       if opts[:free_space].nil? 
         free_space = true 

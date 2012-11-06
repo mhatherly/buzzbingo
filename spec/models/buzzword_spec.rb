@@ -11,6 +11,7 @@ describe Buzzword do
       it { should respond_to(:phrase) }
       it { should respond_to(:id) }
       it { should be_valid }
+      
       describe "when phrase is empty"  do
        before { @buzzword.phrase = nil }
        it {should_not be_valid}
@@ -22,10 +23,17 @@ describe Buzzword do
         max_length = 66
         @buzzword.phrase = "a" * (max_length + 1)
        end
-       
+     
        it {should_not be_valid}
       end
-  end
+      
+      describe 'it should not be the word "FREE"' do
+        before do
+         @buzzword.phrase = "free"
+        end 
+        it {should_not be_valid}
+      end 
+   end
   describe "Buzzwords methods" do
       before (:all) do
            
