@@ -970,9 +970,15 @@ Did another commit and then had my first failure due to randomness on the
 single select test.   The rerun of course did not have such a test failure.
 
 Updated model to refuse an entry of FREE free or Free, "Free to fly" still
-works
+works - used an excludes and the ruby shortcut %w( Free FREE free) which
+is the quick way of builing an array of strings instead of ["Free", "FREE", "free"]
+ 
 
+Did a commit,
+removed a spec for buzzword helper specs that was not being used.
 
+Now we merge back and upload
+ 
 
  
  
