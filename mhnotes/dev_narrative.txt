@@ -979,7 +979,25 @@ removed a spec for buzzword helper specs that was not being used.
 
 Now we merge back and upload
  
+I some work to delete the old faker buzzword in the heroku version
+and add in Phil and Paulisms. 
 
+I noticed a couple of things I did not like in the maintence screens
+
+1) deletes are tedious (although I am not likely to worry about that)
+2) adds and updates are too far to the left 
+3) adds should probably go back to the buzzowords index page instead of the
+update page, or an add button should be on the update form, or both
+
+The puzzle page looks a little flat with a lot of short phrases.
+
+Possible enhancement -  X over the free spot.  
+
+Start to code help page spec
+
+but first went back to fix the look of the update and add pages to  move
+them off the left margin, and to  copy over the new buzzword button to 
+the edit screen.  
  
  
         

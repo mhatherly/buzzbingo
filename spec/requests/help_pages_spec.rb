@@ -7,8 +7,12 @@ describe "Help page" do
   describe "has the standard features of this app's pages" do
       it_behaves_like "Standard_Web_Page"
     end
-  it "has helpful stuff" do  
-   pending " waiting on rest of UI Design"
-   
+   it "has help for the menu options" do  
+     page.should have_content("Options on the Menu Bar ")
+     page.should have_content("Maintaining Buzzwords")
+   end
+   it "has help for Maintenance" do  
+    page.should have_content("Maintaining Buzzwords")
   end
+  
 end

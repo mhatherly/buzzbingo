@@ -1,0 +1,75 @@
+/* color names for this app */
+$bbPurple: #3D368B;
+$bbYellow: #FFFF00; 
+$bbGold: #FFCC00;
+$bbLightYellow: #FFFFCC;
+$bbLogoPurple: #e2e0ed;  /* a faded version of bbPurple */
+
+
+/* bootstrap variables */
+$navbarBackground: $bbPurple; /* try royal purple */
+$navbarLinkColor: $bbYellow; /* yellow */
+$navbarLinkColorHover: $bbGold; /*gold */
+
+$btnPrimaryBackground: $bbPurple;
+  
+@import "bootstrap";
+
+
+div#logo {
+ background-color: $bbLogoPurple;
+ margin-left: 0;
+}
+
+img#logo_image { display: block;
+        margin-left: auto;
+        margin-right: auto;
+        }
+
+div#home_aside {
+        background-color: $bbLightYellow;
+        border: 5px groove $bbPurple;
+        padding: 5px;
+        }
+/* make button look like navbar */
+.btn-primary {
+   color: $bbYellow;
+   text-shadow: 0 1px 0 white;
+   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+   background-color: #B1AED0;
+    background-image: -moz-linear-gradient(center top , white, #3D368B);
+    background-repeat: repeat-x;
+    &:hover {color: $bbGold; }
+}
+td.FREE { 
+   font-size: 22px;
+   font-weight:bold;
+   color: $bbPurple;
+}
+td.short {
+  font-size: 18px;
+}
+td.med  {
+  font-size: 14px;
+}
+
+td.long {
+  font-size: 12px;
+}
+
+table#puzzle td{
+  text-align:center;
+  vertical-align: middle;
+  border: 1px solid black;
+
+}
+table#puzzle th{
+  background: $bbLogoPurple;
+  text-align:center;
+  border: 1px solid black;
+}  
+table#puzzle { 
+table-layout:fixed;
+border: 1px solid black;
+ 
+}
