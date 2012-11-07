@@ -61,6 +61,8 @@ module Buzzbingo
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    # and precompile for heroku 
+    config.assets.precompile += %w( application-all.css application-print.css )
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
